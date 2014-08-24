@@ -4,7 +4,7 @@
   <title>PACE App</title>
   <meta charset="utf-8">
   <meta name="description" content="PACE App">
-  <meta name="author" content="George Miranda">
+  <meta name="author" content="">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -42,7 +42,7 @@
   <hgroup class="auto-fadein">
     <h1>PACE App</h1>
     <h2>Real Statistical Process Control</h2>
-    <p>George Miranda<br/>Data Scientist</p>
+    <p><br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -60,7 +60,7 @@
 
 <p>In the never ending struggle to make better business decisions, the PACE app has been developed for everyone involved in a business setting to observe historical trends and calculate staffing needs based on current performance.</p>
 
-<p>As a manager for Los Angeles County, you will be able to predict staffing needs based on trends and sophisticated algorithms. Even front line staff will be empowered to see their impact on the performance of processes. The openness of this data will bring to light which operations require a &quot;tune-up&quot;, or process improvement. The PACE app is <strong>business</strong> <strong>intelligence</strong> customized for you.</p>
+<p>As a manager for Orange County, you will be able to predict staffing needs based on trends and sophisticated algorithms. Even front line staff will be empowered to see their impact on the performance of processes. The openness of this data will bring to light which operations require a &quot;tune-up&quot;, or process improvement. The PACE app is <strong>business</strong> <strong>intelligence</strong> customized for you.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -93,7 +93,7 @@
   <article data-timings="">
     <p>Start by simply clicking the link below.  </p>
 
-<p><a href="http://georgemirandajr.shinyapps.io/pace/">http://georgemirandajr.shinyapps.io/pace/</a></p>
+<p><a href="http://aogunji.shinyapps.io/pace">http://aogunji.shinyapps.io/pace</a></p>
 
 <p>Then choose either the Recorder or Elections operation to view data on their specific tasks. The primary Recorder task is &quot;indexing&quot;, which is the act of an employee entering information found in property documents into a database. The primary Elections task is &quot;voter registration&quot;, which is the act of an employee entering information found on a voter registration form into a database. </p>
 
@@ -205,7 +205,7 @@
 } 
 ]
   
-      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus")) {
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
         var data = d3.nest()
           .key(function(d){
             //return opts.group === undefined ? 'main' : d[opts.group]
@@ -223,10 +223,15 @@
       
       nv.addGraph(function() {
         var chart = nv.models[opts.type]()
-          .x(function(d) { return d[opts.x] })
-          .y(function(d) { return d[opts.y] })
           .width(opts.width)
           .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
          
         
           

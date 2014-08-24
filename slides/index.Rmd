@@ -54,7 +54,7 @@ Invest in the right things at the right time. The chart below shows the percenta
 ```{r echo=FALSE, results='asis'}
 library(rCharts)
 
-roi <- read.csv("C:/Users/Geo/Documents/dataproducts/first_deck/roi.csv",header = TRUE)
+roi <- read.csv("~/Desktop/Developing-Data-Products-Aogunji/slides/roi.csv",header = TRUE)
 n1 <- nPlot(roi ~ activity, group = 'type', data = roi, type = 'multiBarChart')
 n1$print('chart1')
 

@@ -1,8 +1,6 @@
 ---
 title       : PACE App
 subtitle    : Real Statistical Process Control
-author      : George Miranda
-job         : Data Scientist
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -20,7 +18,7 @@ _What if you had the insight to know which business processes were under-perform
 
 In the never ending struggle to make better business decisions, the PACE app has been developed for everyone involved in a business setting to observe historical trends and calculate staffing needs based on current performance.
 
-As a manager for Los Angeles County, you will be able to predict staffing needs based on trends and sophisticated algorithms. Even front line staff will be empowered to see their impact on the performance of processes. The openness of this data will bring to light which operations require a "tune-up", or process improvement. The PACE app is __business__ __intelligence__ customized for you.
+As a manager for Orange County, you will be able to predict staffing needs based on trends and sophisticated algorithms. Even front line staff will be empowered to see their impact on the performance of processes. The openness of this data will bring to light which operations require a "tune-up", or process improvement. The PACE app is __business__ __intelligence__ customized for you.
 
 --- 
 
@@ -41,7 +39,7 @@ No knowledge of programming or ability to code is necessary in order to use this
 
 Start by simply clicking the link below.  
 
-http://georgemirandajr.shinyapps.io/pace/
+http://aogunji.shinyapps.io/pace
   
 Then choose either the Recorder or Elections operation to view data on their specific tasks. The primary Recorder task is "indexing", which is the act of an employee entering information found in property documents into a database. The primary Elections task is "voter registration", which is the act of an employee entering information found on a voter registration form into a database. 
 
@@ -148,7 +146,7 @@ Invest in the right things at the right time. The chart below shows the percenta
 } 
 ]
   
-      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus")) {
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
         var data = d3.nest()
           .key(function(d){
             //return opts.group === undefined ? 'main' : d[opts.group]
@@ -166,10 +164,15 @@ Invest in the right things at the right time. The chart below shows the percenta
       
       nv.addGraph(function() {
         var chart = nv.models[opts.type]()
-          .x(function(d) { return d[opts.x] })
-          .y(function(d) { return d[opts.y] })
           .width(opts.width)
           .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
          
         
           
@@ -190,6 +193,7 @@ Invest in the right things at the right time. The chart below shows the percenta
       });
     };
 </script>
+
 
 
 --- &radio
